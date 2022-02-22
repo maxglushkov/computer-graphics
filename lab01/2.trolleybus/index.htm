@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>Задание 2</title>
+  </head>
+  <body>
+    <svg version="1.1" width="900" height="335" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <path
+          id="door"
+          d="M 0 130 h 25 v 170 h -25 v -170 m 5 5 v 70 h 15 v -70 h -15 m 0 80 v 60 h 15 v -60 Z"
+          fill="orange"
+          stroke="black" />
+
+        <g id="dualDoor">
+          <use x="0" href="#door" />
+          <use x="25" href="#door" />
+        </g>
+
+        <g id="wheel" transform="translate(0 285)">
+          <circle r="45" />
+          <circle r="22" fill="grey" />
+          <circle r="11" />
+        </g>
+      </defs>
+
+      <path
+        d="M 5 100 h 890 l 5 200
+        h -60 v -170 h -50 v 170
+        h -20 v -15 a 50 50 0 1 0 -100 0 v 15
+        h -135 v -170 h -100 v 170
+        h -135 v -15 a 50 50 0 1 0 -100 0 v 15
+        h -50 v -170 h -100 v 170
+        h -50 l 5 -200
+        m 195 12 v 100 h 110 v -100 h -110
+        m 118 0 v 100 h 110 v -100 h -110
+        m 225 0 v 100 h 110 v -100 h -110
+        m 118 0 v 100 h 110 v -100 h -110
+        m 184 12 v 100 h 35 l -3 -100 Z"
+        fill="orange"
+        stroke="black" />
+
+      <use x="50" href="#dualDoor" />
+      <use x="100" href="#dualDoor" />
+
+      <use x="250" href="#wheel" />
+
+      <use x="435" href="#dualDoor" />
+      <use x="485" href="#dualDoor" />
+
+      <use x="720" href="#wheel" />
+
+      <use x="790" href="#dualDoor" />
+
+      <line x1="0" y1="5" x2="900" y2="5" stroke="black" />
+
+      <line x1="25" y1="5" x2="450" y2="100" stroke="black" />
+      <rect x="20" y="3" width="20" height="4" />
+      <rect x="435" y="95" width="100" height="5" />
+    </svg>
+  </body>
+</html>
