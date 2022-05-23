@@ -7,9 +7,12 @@ constexpr double TAU = 2. * M_PI;
 class GLContext
 {
 public:
-	GLContext(GLdouble xRes, GLdouble yRes)
-		:m_xRes(xRes)
+	GLContext(bool isFrustum, GLdouble xRes, GLdouble yRes, GLdouble zNear, GLdouble zFar)
+		:m_isFrustum(isFrustum)
+		,m_xRes(xRes)
 		,m_yRes(yRes)
+		,m_zNear(zNear)
+		,m_zFar(zFar)
 	{}
 
 	static void AddCrossMarker(GLfloat xc, GLfloat yc, GLfloat halfSize);
@@ -18,9 +21,9 @@ public:
 
 	static void FillRectangle(GLfloat x1, GLfloat y1, GLfloat x2, GLfloat y2);
 
-	void AddArc(GLfloat xc, GLfloat yc, GLfloat r, GLfloat angle1, GLfloat angle2);
+	void AddArc(GLfloat xc, GLfloat yc, GLfloat r, GLfloat angle1, GLfloat angle2) const;
 
-	void FillCircle(GLfloat xc, GLfloat yc, GLfloat r);
+	void FillCircle(GLfloat xc, GLfloat yc, GLfloat r) const;
 
 	void SetScreenSize(int width, int height);
 
@@ -43,7 +46,9 @@ public:
 	}
 
 private:
+	bool m_isFrustum;
 	GLdouble m_xRes, m_yRes;
+	GLdouble m_zNear, m_zFar;
 	GLdouble m_left, m_top;
 	GLdouble m_screenToGL;
 };

@@ -4,8 +4,14 @@
 static SDL_Window *window;
 static SDL_GLContext context;
 
-GLSingleWindow::GLSingleWindow(char const* title, int width, int height, GLdouble xRes, GLdouble yRes)
-	:m_ctx(xRes, yRes)
+GLSingleWindow::GLSingleWindow(
+	char const* title,
+	int width, int height,
+	GLdouble xRes, GLdouble yRes,
+	GLdouble zNear, GLdouble zFar,
+	bool isFrustum
+)
+	:m_ctx(isFrustum, xRes, yRes, zNear, zFar)
 {
 	if (window)
 	{
@@ -41,6 +47,12 @@ void GLSingleWindow::Run()
 		{
 			switch (event.type)
 			{
+				case SDL_KEYDOWN:
+					OnKeyDown(event.key);
+					break;
+				case SDL_KEYUP:
+					OnKeyUp(event.key);
+					break;
 				case SDL_MOUSEMOTION:
 					OnMouseMotion(event.motion);
 					break;

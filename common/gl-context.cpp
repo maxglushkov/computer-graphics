@@ -26,7 +26,7 @@ void GLContext::FillRectangle(GLfloat x1, GLfloat y1, GLfloat x2, GLfloat y2)
 	glEnd();
 }
 
-void GLContext::AddArc(GLfloat xc, GLfloat yc, GLfloat r, GLfloat angle1, GLfloat angle2)
+void GLContext::AddArc(GLfloat xc, GLfloat yc, GLfloat r, GLfloat angle1, GLfloat angle2) const
 {
 	const GLfloat step = M_PI / GLToScreen(r);
 	for (; angle1 < angle2; angle1 += step)
@@ -36,7 +36,7 @@ void GLContext::AddArc(GLfloat xc, GLfloat yc, GLfloat r, GLfloat angle1, GLfloa
 	glVertex2f(xc + r * cos(angle2), yc + r * sin(angle2));
 }
 
-void GLContext::FillCircle(GLfloat xc, GLfloat yc, GLfloat r)
+void GLContext::FillCircle(GLfloat xc, GLfloat yc, GLfloat r) const
 {
 	glBegin(GL_TRIANGLE_FAN);
 	AddArc(xc, yc, r, 0.f, TAU);
@@ -60,7 +60,7 @@ void GLContext::SetScreenSize(int width, int height)
 	m_screenToGL *= 2.;
 
 	glMatrixMode(GL_PROJECTION);
-	glOrtho(m_left, -m_left, -m_top, m_top, -1., 1.);
+	(m_isFrustum ? glFrustum : glOrtho)(m_left, -m_left, -m_top, m_top, m_zNear, m_zFar);
 
 	glMatrixMode(GL_MODELVIEW);
 }
