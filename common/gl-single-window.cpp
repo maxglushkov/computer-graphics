@@ -66,9 +66,8 @@ void GLSingleWindow::Run()
 					return;
 			}
 		}
-		else
+		else if (RenderFrame())
 		{
-			RenderFrame();
 			SDL_GL_SwapWindow(window);
 		}
 	}

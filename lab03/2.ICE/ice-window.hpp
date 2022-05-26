@@ -7,5 +7,5 @@ public:
 	ICEWindow();
 
 private:
-	void RenderFrame() override;
+	bool RenderFrame() override;
 };

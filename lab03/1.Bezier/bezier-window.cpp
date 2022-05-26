@@ -77,7 +77,7 @@ BezierWindow::BezierWindow(CubicBezier & curve, GLdouble resolution)
 	glClearColor(1.f, 1.f, 1.f, 0.f);
 }
 
-void BezierWindow::RenderFrame()
+bool BezierWindow::RenderFrame()
 {
 	const GLfloat markerHalfSize = GetContext().ScreenToGL(MARKER_HALF_SIZE);
 
@@ -90,6 +90,7 @@ void BezierWindow::RenderFrame()
 
 	glColor3ub(0, 0, 255);
 	RenderCurve(m_curve);
+	return true;
 }
 
 void BezierWindow::OnMouseMotion(SDL_MouseMotionEvent const& event)

@@ -28,7 +28,7 @@ LabyrinthWindow::LabyrinthWindow(World & world)
 	glEnable(GL_TEXTURE_2D);
 }
 
-void LabyrinthWindow::RenderFrame()
+bool LabyrinthWindow::RenderFrame()
 {
 	m_controller.UpdatePosition(m_world.player, m_world.labyrinth);
 
@@ -50,6 +50,7 @@ void LabyrinthWindow::RenderFrame()
 			m_renderData.blocks[block - 1].Render(x, z);
 		}
 	);
+	return true;
 }
 
 void LabyrinthWindow::OnKeyDown(SDL_KeyboardEvent const& event)

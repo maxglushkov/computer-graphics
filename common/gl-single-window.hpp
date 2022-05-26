@@ -27,7 +27,7 @@ public:
 private:
 	GLContext m_ctx;
 
-	virtual void RenderFrame() = 0;
+	virtual bool RenderFrame() = 0;
 
 	virtual void OnKeyDown(SDL_KeyboardEvent const& event)
 	{}

@@ -15,7 +15,7 @@ private:
 	PlayerController m_controller;
 	RenderData m_renderData = LoadDefaultRenderData();
 
-	void RenderFrame() override;
+	bool RenderFrame() override;
 
 	void OnKeyDown(SDL_KeyboardEvent const& event) override;
 

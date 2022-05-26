@@ -14,7 +14,7 @@ private:
 	GLdouble m_resolution;
 	VertexController m_controller;
 
-	void RenderFrame() override;
+	bool RenderFrame() override;
 
 	void OnMouseMotion(SDL_MouseMotionEvent const& event) override;
 
